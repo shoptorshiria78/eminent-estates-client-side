@@ -181,14 +181,14 @@ function MainNavBarNPM() {
                     <MenuItem onClick={handleLogOut}>
                       <Typography textAlign="center" >Log Out</Typography>
                     </MenuItem>
-                    <NavLink to='/dashboard'>
+                    
                       <MenuItem>
-                        <Typography textAlign="center" >DashBoard</Typography>
+                        <Typography textAlign="center" ><NavLink to='/dashboard'>DashBoard</NavLink></Typography>
                       </MenuItem>
-                    </NavLink>
+                    
 
                   </Menu>
-                </> : <Link to='/login'><Button variant="contained" color='secondary'>Log In</Button></Link>
+                </> : <Button variant="contained" color='secondary'><Link to='/login'>Log In</Link></Button>
             }
           </Box>
         </Toolbar>
