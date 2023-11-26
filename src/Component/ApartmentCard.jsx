@@ -54,7 +54,7 @@ export default function ApartmentCard({ apartment }) {
             timer: 1500
           });
         }
-        setValue(' ')
+        setValue(null)
       })
   }
 
