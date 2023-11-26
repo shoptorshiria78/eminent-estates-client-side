@@ -3,6 +3,7 @@ import MainLayOut from "../LayOuts/MainLayOut/MainLayOut";
 import HomePage from "../Pages/MainPages/HomePage";
 import LogInPage from "../Pages/MainPages/LogInPage";
 import RegistrationPage from "../Pages/MainPages/RegistrationPage";
+import Apartment from "../Pages/MainPages/Apartment";
 
 const Routes = createBrowserRouter([
     {
@@ -16,6 +17,10 @@ const Routes = createBrowserRouter([
         {
            path:'login',
            element:<LogInPage></LogInPage>
+        },
+        {
+           path:'apartment',
+           element:<Apartment></Apartment>
         },
         {
            path:'register',

@@ -12,7 +12,7 @@ import { useForm } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import useAuth from '../../Hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
-// import useAxiosPublic from '../../AxiosInterfaces/useAxiosPublic';
+ import useAxiosPublic from '../../AxiosInterfaces/useAxiosPublic';
 
 
 function Copyright(props) {
@@ -32,7 +32,7 @@ function Copyright(props) {
 export default function SignUp() {
 
   const { registration, updateUser, logOut } = useAuth()
-  // const axiosPublic = useAxiosPublic()
+  const axiosPublic = useAxiosPublic()
   const navigate = useNavigate()
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm()
@@ -59,24 +59,24 @@ export default function SignUp() {
             .catch()
             navigate('/login')
           })
-        // const userInfo ={
-        //     name:data.name,
-        //     email:data.email
-        // }
-        // axiosPublic.post('/users',userInfo)
-        // .then(res=>{
-        //     if(res.data.insertedId){
-        //        
-        //         Swal.fire({
-        //             position: "top-end",
-        //             icon: "success",
-        //             title: "User has been saved",
-        //             showConfirmButton: false,
-        //             timer: 1500
-        //           });
-        //         reset();
-        //     }
-        // })              
+        const userInfo ={
+            name:data.name,
+            email:data.email,
+            role:'user',
+        }
+        axiosPublic.post(`/users`,userInfo)
+        .then(res=>{
+            if(res.data.insertedId){        
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "User has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                reset();
+            }
+        })              
       })
 
   }

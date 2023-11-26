@@ -13,16 +13,15 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import useAuth from '../Hooks/useAuth';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 
-const pages = ['Home', 'Apartment'];
-const settings = ['Username', 'Dashboard', 'Logout'];
+
 
 function MainNavBarNPM() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const {user} = useAuth()
+  const { user, logOut } = useAuth()
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -38,6 +37,15 @@ function MainNavBarNPM() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleLogOut = () => {
+    console.log("hitted in logout")
+    logOut()
+      .then()
+      .catch(error => {
+        console.log(error)
+      })
+  }
 
   return (
     <AppBar position="static">
@@ -92,11 +100,19 @@ function MainNavBarNPM() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              
+              <NavLink to='/'
+                onClick={handleCloseNavMenu}
+                sx={{ mx: 4, color: 'white', display: 'block' }}
+              >
+               Home 
+              </NavLink>
+              <NavLink to='/apartment'
+                onClick={handleCloseNavMenu}
+                sx={{ mx: 4, color: 'white', display: 'block' }}
+              >
+                Apartment
+              </NavLink>
             </Menu>
           </Box>
           <MapsHomeWorkIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -118,16 +134,21 @@ function MainNavBarNPM() {
           >
             Eminent Estates
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, mx: 4 }}>
+            
+              <NavLink to='/'
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ mx: 4, color: 'white', display: 'block' }}
               >
-                {page}
-              </Button>
-            ))}
+               Home 
+              </NavLink>
+              <NavLink to='/apartment'
+                onClick={handleCloseNavMenu}
+                sx={{ mx: 4, color: 'white', display: 'block' }}
+              >
+                Apartment
+              </NavLink>
+           
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -135,7 +156,7 @@ function MainNavBarNPM() {
               user ?
                 <> <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar alt="Remy Sharp" src={user.photoURL} />
                   </IconButton>
                 </Tooltip>
                   <Menu
@@ -154,11 +175,18 @@ function MainNavBarNPM() {
                     open={Boolean(anchorElUser)}
                     onClose={handleCloseUserMenu}
                   >
-                    {settings.map((setting) => (
-                      <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                        <Typography textAlign="center">{setting}</Typography>
+                    <MenuItem >
+                      <Typography textAlign="center" >{user.displayName}</Typography>
+                    </MenuItem>
+                    <MenuItem onClick={handleLogOut}>
+                      <Typography textAlign="center" >Log Out</Typography>
+                    </MenuItem>
+                    <NavLink to='/dashboard'>
+                      <MenuItem>
+                        <Typography textAlign="center" >DashBoard</Typography>
                       </MenuItem>
-                    ))}
+                    </NavLink>
+
                   </Menu>
                 </> : <Link to='/login'><Button variant="contained" color='secondary'>Log In</Button></Link>
             }
