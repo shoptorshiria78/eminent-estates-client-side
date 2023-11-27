@@ -28,6 +28,8 @@ import { useState } from 'react';
 import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import useAdmin from '../../Hooks/useAdmin';
 import useMember from '../../Hooks/useMember';
+import { NavLink, Outlet } from 'react-router-dom';
+
 
 
 function Copyright(props) {
@@ -166,7 +168,9 @@ export default function DashboardLayOut() {
                                         <ListItemIcon>
                                             <PersonIcon />
                                         </ListItemIcon>
-                                        <ListItemText primary="Manage Members" />
+                                        <NavLink  to="/dashboard/manageMember" >
+                                          <ListItemText primary="Manage Members" />
+                                        </NavLink>
                                     </ListItemButton>
                                     <ListItemButton>
                                         <ListItemIcon>
@@ -229,26 +233,25 @@ export default function DashboardLayOut() {
                                         </ListItemButton>
                                     </>
                         }
-
+                       
                         <Divider sx={{ my: 1 }} />
 
                         {/* secondary list items to be added */}
                         <ListItemButton>
-                           
                                 <ListItemIcon>
                                     <HomeIcon />
                                 </ListItemIcon>
-                                <Link href="/" underline="none" color="inherit">
+                                <NavLink to="/">
                                 <ListItemText primary="Home" />
-                            </Link>
+                            </NavLink>
                         </ListItemButton>
                         <ListItemButton>
                             <ListItemIcon>
                                 <ApartmentIcon />
                             </ListItemIcon>
-                            <Link href="/apartment" underline="none" color="inherit">
+                            <NavLink to="/apartment" >
                             <ListItemText primary="Apartment" />
-                            </Link>
+                            </NavLink>
                         </ListItemButton>
 
                     </List>
@@ -278,10 +281,8 @@ export default function DashboardLayOut() {
                                         height: 240,
                                     }}
                                 >
-
-
-                                    {/*outlet should be here*/}
-
+                                    {/* OutLet should be here */}
+                                <Outlet></Outlet>
 
                                 </Paper>
                             </Grid>

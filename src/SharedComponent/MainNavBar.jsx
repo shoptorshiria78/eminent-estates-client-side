@@ -101,18 +101,22 @@ function MainNavBarNPM() {
               }}
             >
               
-              <NavLink to='/'
+              <Button 
                 onClick={handleCloseNavMenu}
                 sx={{ mx: 4, color: 'white', display: 'block' }}
               >
-               Home 
-              </NavLink>
-              <NavLink to='/apartment'
+                 <Link href='/'> Home </Link>
+               
+               
+              </Button>
+              <Button 
                 onClick={handleCloseNavMenu}
                 sx={{ mx: 4, color: 'white', display: 'block' }}
               >
-                Apartment
-              </NavLink>
+                <Link href='/apartment'>Apartment</Link>
+                
+                
+              </Button>
             </Menu>
           </Box>
           <MapsHomeWorkIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />

@@ -5,6 +5,8 @@ import LogInPage from "../Pages/MainPages/LogInPage";
 import RegistrationPage from "../Pages/MainPages/RegistrationPage";
 import Apartment from "../Pages/MainPages/Apartment";
 import DashboardLayOut from "../LayOuts/DashBoardLayOut/DashBoardLayOut";
+import ManageMembers from "../Pages/DashBoardPages/AdminPage/ManageMembers";
+import AdminPrivateRoute from "../PrivateRoute/AdminPrivateRoute";
 
 const Routes = createBrowserRouter([
     {
@@ -30,11 +32,13 @@ const Routes = createBrowserRouter([
       ]
     },
     {
-       path: '/dashboard',
+       path: 'dashboard',
        element:<DashboardLayOut></DashboardLayOut>,
        children:[
+         // adminLayOut
          {
-
+            path:'manageMember',
+            element:<AdminPrivateRoute><ManageMembers></ManageMembers></AdminPrivateRoute>
          }
        ]
     }
