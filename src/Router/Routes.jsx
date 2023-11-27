@@ -10,6 +10,9 @@ import AdminPrivateRoute from "../PrivateRoute/AdminPrivateRoute";
 import MakeAnnouncement from "../Pages/DashBoardPages/AdminPage/MakeAnnouncement";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import AgreementPage from "../Pages/DashBoardPages/AdminPage/AgreementPage";
+import MyProfile from "../Pages/DashBoardPages/MemberPage.jsx/MyProfile";
+import MemberPrivateRoute from "../PrivateRoute/MemberPrivateRoute";
+import AnnouncementMember from "../Pages/DashBoardPages/MemberPage.jsx/AnnouncementMember";
 
 const Routes = createBrowserRouter([
    {
@@ -55,7 +58,20 @@ const Routes = createBrowserRouter([
             element: <AdminPrivateRoute>
                <AgreementPage></AgreementPage>
             </AdminPrivateRoute>
+         },
+          // memberLayOut
+         {
+            path: 'myProfile',
+            element:<MemberPrivateRoute> <MyProfile></MyProfile></MemberPrivateRoute>
+               
+         },
+         {
+            path: 'announcementMember',
+            element:<MemberPrivateRoute> <AnnouncementMember></AnnouncementMember></MemberPrivateRoute>
+               
          }
+        
+      
       ]
    }
 ]);

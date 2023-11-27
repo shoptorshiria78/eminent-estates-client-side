@@ -202,7 +202,9 @@ export default function DashboardLayOut() {
                                             <ListItemIcon>
                                                 <DashboardIcon />
                                             </ListItemIcon>
+                                            <NavLink  to="/dashboard/myProfile" >
                                             <ListItemText primary="My Profile" />
+                                            </NavLink>
                                         </ListItemButton>
                                         <ListItemButton>
                                             <ListItemIcon>
@@ -220,7 +222,9 @@ export default function DashboardLayOut() {
                                             <ListItemIcon>
                                                 <CampaignIcon />
                                             </ListItemIcon>
+                                            <NavLink  to="/dashboard/announcementMember" >
                                             <ListItemText primary="Announcement" />
+                                            </NavLink>
                                         </ListItemButton>
                                     </> : <>
                                         <ListItemButton>
