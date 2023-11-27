@@ -176,7 +176,9 @@ export default function DashboardLayOut() {
                                         <ListItemIcon>
                                             <CampaignIcon />
                                         </ListItemIcon>
+                                        <NavLink  to="/dashboard/makeAnnouncement" >
                                         <ListItemText primary="Make Announcement" />
+                                        </NavLink>
                                     </ListItemButton>
                                     <ListItemButton>
                                         <ListItemIcon>
@@ -278,7 +280,7 @@ export default function DashboardLayOut() {
                                         p: 2,
                                         display: 'flex',
                                         flexDirection: 'column',
-                                        height: 240,
+                                        height: 440,
                                     }}
                                 >
                                     {/* OutLet should be here */}

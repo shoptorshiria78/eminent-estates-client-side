@@ -7,6 +7,8 @@ import Apartment from "../Pages/MainPages/Apartment";
 import DashboardLayOut from "../LayOuts/DashBoardLayOut/DashBoardLayOut";
 import ManageMembers from "../Pages/DashBoardPages/AdminPage/ManageMembers";
 import AdminPrivateRoute from "../PrivateRoute/AdminPrivateRoute";
+import MakeAnnouncement from "../Pages/DashBoardPages/AdminPage/MakeAnnouncement";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const Routes = createBrowserRouter([
     {
@@ -33,12 +35,18 @@ const Routes = createBrowserRouter([
     },
     {
        path: 'dashboard',
-       element:<DashboardLayOut></DashboardLayOut>,
+       element:<PrivateRoute><DashboardLayOut></DashboardLayOut></PrivateRoute>,
        children:[
          // adminLayOut
          {
             path:'manageMember',
             element:<AdminPrivateRoute><ManageMembers></ManageMembers></AdminPrivateRoute>
+         },
+         {
+            path:'makeAnnouncement',
+            element:<AdminPrivateRoute>
+   <MakeAnnouncement></MakeAnnouncement>
+            </AdminPrivateRoute>
          }
        ]
     }
