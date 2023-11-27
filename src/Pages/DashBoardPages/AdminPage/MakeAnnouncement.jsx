@@ -4,11 +4,32 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useForm } from 'react-hook-form';
 import Typography from '@mui/material/Typography';
+import useAxiosSecure from '../../../AxiosInterfaces/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 export default function MakeAnnouncement() {
     const { register, handleSubmit, formState: { errors } } = useForm()
+    const axiosSecure = useAxiosSecure();
     const onSubmit = (data) => {
         console.log(data)
+        const title = data.title;
+        const description = data.description;
+        const announcement = {
+            title,
+            description
+        }
+        axiosSecure.post('/announcement', announcement)
+        .then(res=>{
+            if(res.data.insertedId){
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Your Announcement has been saved",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+            }
+        })
 
     }
 
@@ -16,7 +37,7 @@ export default function MakeAnnouncement() {
 
 
         <div>
-            <Typography variant="h4" color="secondary" align="center" sx={{fontWeight:600, my:4}}>Make Announcement</Typography>
+            <Typography variant="h4" color="secondary" align="center" sx={{ fontWeight: 600, my: 4 }}>Make Announcement</Typography>
             <Box component="form" noValidate onSubmit={handleSubmit(onSubmit)} sx={{ mt: 1 }}>
                 <TextField
                     required

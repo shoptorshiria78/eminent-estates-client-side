@@ -142,13 +142,13 @@ function MainNavBarNPM() {
             
               <NavLink to='/'
                 onClick={handleCloseNavMenu}
-                sx={{ mx: 4, color: 'white', display: 'block' }}
+                style={{ marginRight: '1rem', color: 'white', display: 'block' }}
               >
                Home 
               </NavLink>
               <NavLink to='/apartment'
                 onClick={handleCloseNavMenu}
-                sx={{ mx: 4, color: 'white', display: 'block' }}
+                style={{ marginLeft: '1rem' , color: 'white', display: 'block' }}
               >
                 Apartment
               </NavLink>

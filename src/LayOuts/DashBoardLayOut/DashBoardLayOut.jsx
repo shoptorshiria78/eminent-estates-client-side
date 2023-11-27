@@ -184,7 +184,9 @@ export default function DashboardLayOut() {
                                         <ListItemIcon>
                                             <FormatListBulletedIcon />
                                         </ListItemIcon>
+                                        <NavLink  to="/dashboard/agreementRequest" >
                                         <ListItemText primary="Agreement Request" />
+                                        </NavLink>
                                     </ListItemButton>
                                     <ListItemButton>
                                         <ListItemIcon>
@@ -270,17 +272,17 @@ export default function DashboardLayOut() {
                         overflow: 'auto',
                     }}
                 >
-                    <Toolbar />
+                    
                     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
                         <Grid container spacing={3}>
                             {/* Chart */}
-                            <Grid item xs={12} md={8} lg={9}>
+                            <Grid item xs={12} md={8} lg={11}>
                                 <Paper
                                     sx={{
                                         p: 2,
                                         display: 'flex',
                                         flexDirection: 'column',
-                                        height: 440,
+                                        
                                     }}
                                 >
                                     {/* OutLet should be here */}

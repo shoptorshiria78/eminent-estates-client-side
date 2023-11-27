@@ -1,4 +1,4 @@
-import {createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 import MainLayOut from "../LayOuts/MainLayOut/MainLayOut";
 import HomePage from "../Pages/MainPages/HomePage";
 import LogInPage from "../Pages/MainPages/LogInPage";
@@ -9,47 +9,55 @@ import ManageMembers from "../Pages/DashBoardPages/AdminPage/ManageMembers";
 import AdminPrivateRoute from "../PrivateRoute/AdminPrivateRoute";
 import MakeAnnouncement from "../Pages/DashBoardPages/AdminPage/MakeAnnouncement";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AgreementPage from "../Pages/DashBoardPages/AdminPage/AgreementPage";
 
 const Routes = createBrowserRouter([
-    {
+   {
       path: "/",
       element: <MainLayOut></MainLayOut>,
-      children:[
-        {
-           path:'/',
-           element:<HomePage></HomePage>
-        },
-        {
-           path:'login',
-           element:<LogInPage></LogInPage>
-        },
-        {
-           path:'apartment',
-           element:<Apartment></Apartment>
-        },
-        {
-           path:'register',
-           element:<RegistrationPage></RegistrationPage>
-        }
-      ]
-    },
-    {
-       path: 'dashboard',
-       element:<PrivateRoute><DashboardLayOut></DashboardLayOut></PrivateRoute>,
-       children:[
-         // adminLayOut
+      children: [
          {
-            path:'manageMember',
-            element:<AdminPrivateRoute><ManageMembers></ManageMembers></AdminPrivateRoute>
+            path: '/',
+            element: <HomePage></HomePage>
          },
          {
-            path:'makeAnnouncement',
-            element:<AdminPrivateRoute>
-   <MakeAnnouncement></MakeAnnouncement>
+            path: 'login',
+            element: <LogInPage></LogInPage>
+         },
+         {
+            path: 'apartment',
+            element: <Apartment></Apartment>
+         },
+         {
+            path: 'register',
+            element: <RegistrationPage></RegistrationPage>
+         }
+      ]
+   },
+   {
+      path: 'dashboard',
+      element: <PrivateRoute><DashboardLayOut></DashboardLayOut></PrivateRoute>,
+      children: [
+         // adminLayOut
+         {
+            path: 'manageMember',
+            element: <AdminPrivateRoute><ManageMembers></ManageMembers></AdminPrivateRoute>
+         },
+         {
+            path: 'makeAnnouncement',
+            element: <AdminPrivateRoute>
+               <MakeAnnouncement></MakeAnnouncement>
             </AdminPrivateRoute>
          }
-       ]
-    }
-  ]);
+         ,
+         {
+            path: 'agreementRequest',
+            element: <AdminPrivateRoute>
+               <AgreementPage></AgreementPage>
+            </AdminPrivateRoute>
+         }
+      ]
+   }
+]);
 
 export default Routes;
