@@ -13,6 +13,8 @@ import AgreementPage from "../Pages/DashBoardPages/AdminPage/AgreementPage";
 import MyProfile from "../Pages/DashBoardPages/MemberPage.jsx/MyProfile";
 import MemberPrivateRoute from "../PrivateRoute/MemberPrivateRoute";
 import AnnouncementMember from "../Pages/DashBoardPages/MemberPage.jsx/AnnouncementMember";
+import MakeCouponPage from "../Pages/DashBoardPages/AdminPage/MakeCouponPage";
+import MakePayment from "../Pages/DashBoardPages/MemberPage.jsx/MakePayment";
 
 const Routes = createBrowserRouter([
    {
@@ -54,6 +56,13 @@ const Routes = createBrowserRouter([
          }
          ,
          {
+            path: 'manageCoupon',
+            element: <AdminPrivateRoute>
+               <MakeCouponPage></MakeCouponPage>
+            </AdminPrivateRoute>
+         }
+         ,
+         {
             path: 'agreementRequest',
             element: <AdminPrivateRoute>
                <AgreementPage></AgreementPage>
@@ -63,6 +72,11 @@ const Routes = createBrowserRouter([
          {
             path: 'myProfile',
             element:<MemberPrivateRoute> <MyProfile></MyProfile></MemberPrivateRoute>
+               
+         },
+         {
+            path: 'makePayment',
+            element:<MemberPrivateRoute><MakePayment></MakePayment></MemberPrivateRoute>
                
          },
          {

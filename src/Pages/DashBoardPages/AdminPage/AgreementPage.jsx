@@ -9,16 +9,87 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { Button } from '@mui/material';
+import useAxiosSecure from '../../../AxiosInterfaces/useAxiosSecure';
+import Swal from 'sweetalert2';
 
-function createData(UserName, UserEmail, FloorNo, BlockName, RoomNo, Rent, AgreementRequestDate, Accept, Reject) {
-  return { UserName, UserEmail, FloorNo, BlockName, RoomNo, Rent, AgreementRequestDate, Accept, Reject };
+
+function createData(UserName, UserEmail, FloorNo, BlockName, RoomNo, Rent, Date, status, _id, userInfoId) {
+  return { UserName, UserEmail, FloorNo, BlockName, RoomNo, Rent, Date, status, _id, userInfoId};
 }
 
 const AgreementPage = () => {
 
-  const [agreement, refetch] = useAgreement()
+  const [agreement, refetch] = useAgreement();
+  const axiosSecure = useAxiosSecure()
+  
+  const handleAccept = (_id, uId)=>{
+    const status = 'checked';
+    const userRole = 'member';
+    const role ="member";
+    const updatedDoc = {
+      status,
+      userRole
+    }
+   axiosSecure.patch(`/updateAgreement/${_id}`, updatedDoc)
+    .then(res=>{
+      if(res.data.modifiedCount > 0){
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Agreement has been Updated",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        refetch();
+      }
+    })
 
-  const rows = agreement.map((singleAgreement) => createData(singleAgreement.UserName, singleAgreement.UserEmail, singleAgreement.FloorNo, singleAgreement.BlockName, singleAgreement.RoomNo, singleAgreement.Rent, singleAgreement.Date))
+    const roleUpdate ={ role}
+    axiosSecure.patch(`/updateUser/${uId}`, roleUpdate)
+    .then(res=>{
+      console.log(res)
+      if(res.data.modifiedCount > 0){ 
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User has been Updated",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        refetch();
+      }
+    })
+   
+     
+  }
+
+  const handleReject = (_id)=>{
+    const status = 'checked';
+    const userRole = 'user';
+
+    const updatedDoc = {
+      status,
+      userRole
+    }
+    axiosSecure.patch(`/updateAgreement/${_id}`, updatedDoc)
+    .then(res=>{
+      if(res.data.modifiedCount > 0){
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Agreement has been Updated",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        refetch();
+      }
+    })
+   
+  }
+
+  const rows = agreement.map((singleAgreement) => createData(singleAgreement.UserName, singleAgreement.UserEmail, singleAgreement.FloorNo, singleAgreement.BlockName, singleAgreement.RoomNo, singleAgreement.Rent, singleAgreement.Date, singleAgreement.status, singleAgreement._id, singleAgreement.userInfoId))
+  console.log(rows);
 
   return (
     <div>
@@ -36,8 +107,11 @@ const AgreementPage = () => {
               <TableCell align="right">Room No</TableCell>
               <TableCell align="right">Rent</TableCell>
               <TableCell align="right">Date</TableCell>
+              <TableCell align="right">Status</TableCell>
+              <TableCell align="right">id</TableCell>
               <TableCell align="right">Accept</TableCell>
               <TableCell align="right">Reject</TableCell>
+             
              
             </TableRow>
           </TableHead>
@@ -57,8 +131,11 @@ const AgreementPage = () => {
                 <TableCell align="right">{row.RoomNo}</TableCell>
                 <TableCell align="right">{row.Rent}</TableCell>
                 <TableCell align="right">{row.Date}</TableCell>
-                <TableCell align="right"><ThumbUpIcon/></TableCell>
-                <TableCell align="right"><DeleteIcon/></TableCell>
+                <TableCell align="right">{row.status}</TableCell>
+                <TableCell align="right">{row._id}</TableCell>
+                <TableCell align="right"><Button onClick={()=>handleAccept(row._id, row.userInfoId)}><ThumbUpIcon/></Button></TableCell>
+                <TableCell align="right"><Button onClick={()=>handleReject(row._id)}><DeleteIcon/></Button></TableCell>
+                
 
               </TableRow>
             ))}

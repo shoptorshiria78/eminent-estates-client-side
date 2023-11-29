@@ -1,4 +1,3 @@
-
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -8,19 +7,26 @@ import Typography from '@mui/material/Typography';
 import useAxiosSecure from '../AxiosInterfaces/useAxiosSecure';
 import useAuth from '../Hooks/useAuth';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { useState } from 'react';
+import {  useState } from 'react';
 import Swal from 'sweetalert2';
+ import useUser from '../Hooks/useUser';
+
+
 
 export default function ApartmentCard({ apartment }) {
-
+  const [users] = useUser();
   const axiosSecure = useAxiosSecure();
   const { user } = useAuth();
   const [value, setValue] = useState(null);
+  const [Booked, setBooked] = useState(false);
+  const PresentUser = users.find(singleUser=> singleUser.email === user.email)
+ 
 
+ 
   const handleAgreement = () => {
-
-    const UserName = user.displayName;
-    const UserEmail = user.email;
+   
+    const UserName = PresentUser.name;
+    const UserEmail = PresentUser.email;
     const FloorNo = apartment.floorNo;
     const BlockName = apartment.blockName
     const RoomNo = apartment.apartmentNo
@@ -28,6 +34,9 @@ export default function ApartmentCard({ apartment }) {
     const Date = value;
     const status = 'pending';
     const userRole = 'user';
+    const userInfoId =PresentUser._id;
+   
+    
 
     const agreementInfo = {
       UserName,
@@ -38,9 +47,12 @@ export default function ApartmentCard({ apartment }) {
       Rent,
       Date,
       status,
-      userRole
+      userRole,
+      userInfoId,
+
 
     }
+      
     console.log(agreementInfo);
 
     axiosSecure.post('/agreement', agreementInfo)
@@ -53,9 +65,12 @@ export default function ApartmentCard({ apartment }) {
             showConfirmButton: false,
             timer: 1500
           });
+          setValue(null)
+          setBooked(true);
         }
-        setValue(null)
+
       })
+
   }
 
   return (
@@ -87,8 +102,12 @@ export default function ApartmentCard({ apartment }) {
         </DatePicker>
       </CardContent>
       <CardActions>
-        <Button onClick={handleAgreement} variant='contained' color='secondary' size="small">Agreement</Button>
+        {
+          Booked ? <Button variant='contained' color='primary' size="small">Booked</Button>
+            : <Button onClick={handleAgreement} variant='contained' color='secondary' size="small">Agreement</Button>
+        }
       </CardActions>
+
     </Card>
   );
 }

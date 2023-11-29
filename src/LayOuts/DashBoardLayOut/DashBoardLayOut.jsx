@@ -192,7 +192,9 @@ export default function DashboardLayOut() {
                                         <ListItemIcon>
                                             <AttachMoneyIcon />
                                         </ListItemIcon>
+                                        <NavLink  to="/dashboard/manageCoupon" >
                                         <ListItemText primary="Manage Coupons" />
+                                        </NavLink>
                                     </ListItemButton>
                                 </> :
 
@@ -210,7 +212,9 @@ export default function DashboardLayOut() {
                                             <ListItemIcon>
                                                 <AttachMoneyIcon />
                                             </ListItemIcon>
+                                            <NavLink  to="/dashboard/makePayment" >
                                             <ListItemText primary="Make Payment" />
+                                            </NavLink>
                                         </ListItemButton>
                                         <ListItemButton>
                                             <ListItemIcon>

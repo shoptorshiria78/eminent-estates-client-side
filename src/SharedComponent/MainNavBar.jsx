@@ -13,7 +13,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import MapsHomeWorkIcon from '@mui/icons-material/MapsHomeWork';
 import useAuth from '../Hooks/useAuth';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 
 
@@ -22,6 +23,7 @@ function MainNavBarNPM() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const { user, logOut } = useAuth()
+  const navigate = useNavigate();
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -41,11 +43,26 @@ function MainNavBarNPM() {
   const handleLogOut = () => {
     console.log("hitted in logout")
     logOut()
-      .then()
+      .then(res=>{
+        if(res){
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "LogOut Successfully",
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+        navigate('/')
+      })
       .catch(error => {
         console.log(error)
       })
   }
+
+ if(user){
+  console.log(user.photoURL);
+ }
 
   return (
     <AppBar position="static">

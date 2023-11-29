@@ -7,8 +7,8 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteIcon from '@mui/icons-material/Delete';
-import useUser from '../../../Hooks/useUser';
 import Typography from '@mui/material/Typography';
+import useAgreement from '../../../Hooks/useAgreement';
 
 function createData(UserName, UserEmail, Action) {
   return { UserName, UserEmail, Action };
@@ -17,9 +17,10 @@ function createData(UserName, UserEmail, Action) {
 
 export default function ManageMembers() {
 
-  const [users] = useUser();
-  console.log(users);
-  const rows = users.map((user) => createData(user.name, user.email))
+  const [agreement] = useAgreement();
+  console.log(agreement);
+  const members = agreement.filter(user=> user.userRole === 'member')
+  const rows = members.map((user) => createData(user.UserName, user.UserEmail))
 
   return (
     <div>
