@@ -37,7 +37,7 @@ function Copyright(props) {
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
             <Link color="inherit" href="https://mui.com/">
-                Your Website
+                Eminent Estate
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -220,7 +220,9 @@ export default function DashboardLayOut() {
                                             <ListItemIcon>
                                                 <FormatListBulletedIcon />
                                             </ListItemIcon>
+                                            <NavLink  to="/dashboard/paymentHistory" >
                                             <ListItemText primary="Payment History" />
+                                            </NavLink>
                                         </ListItemButton>
                                         <ListItemButton>
                                             <ListItemIcon>

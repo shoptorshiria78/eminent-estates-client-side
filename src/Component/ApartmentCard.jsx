@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import useAxiosSecure from '../AxiosInterfaces/useAxiosSecure';
 import useAuth from '../Hooks/useAuth';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import {  useState } from 'react';
 import Swal from 'sweetalert2';
  import useUser from '../Hooks/useUser';
@@ -45,7 +45,7 @@ export default function ApartmentCard({ apartment }) {
       BlockName,
       RoomNo,
       Rent,
-      Date,
+      Date ,
       status,
       userRole,
       userInfoId,

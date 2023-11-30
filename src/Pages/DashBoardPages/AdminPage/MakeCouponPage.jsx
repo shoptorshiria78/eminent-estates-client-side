@@ -37,6 +37,7 @@ export default function MakeCouponPage() {
   const handleClose = () => setOpen(false);
   const axiosSecure = useAxiosSecure();
   const [coupon] = useCoupon();
+  console.log(coupon);
 
   const handleSubmit = (event) => {
     event.preventDefault();

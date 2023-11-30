@@ -15,6 +15,8 @@ import MemberPrivateRoute from "../PrivateRoute/MemberPrivateRoute";
 import AnnouncementMember from "../Pages/DashBoardPages/MemberPage.jsx/AnnouncementMember";
 import MakeCouponPage from "../Pages/DashBoardPages/AdminPage/MakeCouponPage";
 import MakePayment from "../Pages/DashBoardPages/MemberPage.jsx/MakePayment";
+import MakePaymentPage from "../Pages/DashBoardPages/MemberPage.jsx/MakePaymentPage";
+import PaymentHistory from "../Pages/DashBoardPages/MemberPage.jsx/PaymentHistory";
 
 const Routes = createBrowserRouter([
    {
@@ -77,6 +79,16 @@ const Routes = createBrowserRouter([
          {
             path: 'makePayment',
             element:<MemberPrivateRoute><MakePayment></MakePayment></MemberPrivateRoute>
+               
+         },
+         {
+            path: 'makePaymentPage',
+            element:<MemberPrivateRoute><MakePaymentPage></MakePaymentPage></MemberPrivateRoute>
+               
+         },
+         {
+            path: 'paymentHistory',
+            element:<MemberPrivateRoute><PaymentHistory></PaymentHistory></MemberPrivateRoute>
                
          },
          {
