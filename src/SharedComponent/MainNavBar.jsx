@@ -157,13 +157,15 @@ function MainNavBarNPM() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, mx: 4 }}>
             
-              <NavLink to='/'
+              <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-5 py-3 rounded-xl " : " text-base bg-purple-400 text-white px-5 py-3 rounded-xl "} to='/'
                 onClick={handleCloseNavMenu}
                 style={{ marginRight: '1rem', color: 'white', display: 'block' }}
               >
                Home 
               </NavLink>
-              <NavLink to='/apartment'
+              <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-5 py-3 rounded-xl " : " text-base bg-purple-400 text-white px-5 py-3 rounded-xl "} to='/apartment'
                 onClick={handleCloseNavMenu}
                 style={{ marginLeft: '1rem' , color: 'white', display: 'block' }}
               >

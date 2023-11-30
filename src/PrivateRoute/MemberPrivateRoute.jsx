@@ -5,8 +5,11 @@ import useMember from "../Hooks/useMember";
 
 const MemberPrivateRoute = ({children}) => {
     const location = useLocation()
+
     const {user, loading} = useAuth();
+
     const [isMember, isMemberLoading] = useMember()
+
     if(loading || isMemberLoading){
         return <span className="loading loading-ring loading-lg"></span>
     }
@@ -14,6 +17,7 @@ const MemberPrivateRoute = ({children}) => {
     if(user && isMember){
       return children
     }
+    console.log(isMember, isMemberLoading)
 
     return <Navigate to='/login' state={{from:location}} replace></Navigate>
 };

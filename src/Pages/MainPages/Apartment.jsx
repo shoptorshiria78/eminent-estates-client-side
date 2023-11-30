@@ -1,5 +1,5 @@
 
-import { Box, Button} from "@mui/material";
+import { Box, Button, Typography} from "@mui/material";
 import ApartmentCard from "../../Component/ApartmentCard"
 
 import MainNavBarNPM from "../../SharedComponent/MainNavBar";
@@ -7,6 +7,7 @@ import { useLoaderData } from "react-router-dom";
 import {  useEffect, useState } from "react";
 import useAxiosPublic from "../../AxiosInterfaces/useAxiosPublic";
 import Footer from "../../SharedComponent/Footer";
+import ShowCoupon from "../../Component/ShowCoupon";
 
 
 
@@ -46,6 +47,8 @@ const Apartment = () => {
     return (
         <div>
             <MainNavBarNPM></MainNavBarNPM>
+            <ShowCoupon></ShowCoupon>
+            <Typography variant="h4" color="secondary" align="center" sx={{ fontWeight: 600, my: 4 }}>Our Apartments</Typography>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 my-10 max-w-6xl mx-auto">
                 {
                     apartments?.map(apartment => <ApartmentCard apartment={apartment} key={apartment._id}>

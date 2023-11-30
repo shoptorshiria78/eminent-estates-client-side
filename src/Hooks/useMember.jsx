@@ -6,10 +6,11 @@ import useAuth from "./useAuth";
 const useMember = () => {
 
     const axiosSecure = useAxiosSecure();
-    const {user} = useAuth();
+    const {user, loading} = useAuth();
 
    const {data:isMember, isPending:isMemberLoading} = useQuery({
         queryKey:['isMember'],
+        enabled:!loading,
         queryFn: async()=>{
         const res = await axiosSecure.get(`/user/member/${user.email}`)
         return res.data.member

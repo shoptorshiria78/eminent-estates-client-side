@@ -8,19 +8,44 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Typography from '@mui/material/Typography';
-import useAgreement from '../../../Hooks/useAgreement';
+import useUser from '../../../Hooks/useUser';
+import useAxiosSecure from '../../../AxiosInterfaces/useAxiosSecure';
+import Swal from 'sweetalert2';
 
-function createData(UserName, UserEmail, Action) {
-  return { UserName, UserEmail, Action };
+function createData(name, email, _id) {
+  return { name, email, _id };
 }
 
 
 export default function ManageMembers() {
 
-  const [agreement] = useAgreement();
-  console.log(agreement);
-  const members = agreement.filter(user=> user.userRole === 'member')
-  const rows = members.map((user) => createData(user.UserName, user.UserEmail))
+  const [users, refetch] = useUser();
+  const axiosSecure = useAxiosSecure()
+  
+  const members = users.filter(user=> user.role === 'member')
+  const rows = members.map((user) => createData(user.name, user.email, user._id))
+  console.log(rows);
+
+
+  const handleDelete=(id)=>{
+    console.log(id);
+    const role ="user";
+    const roleUpdate ={ role}
+    axiosSecure.patch(`/updateUser/${id}`, roleUpdate)
+    .then(res=>{
+      console.log(res)
+      if(res.data.modifiedCount > 0){ 
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User has been Updated",
+          showConfirmButton: false,
+          timer: 1500
+        });
+        refetch();
+      }
+    })
+  }
 
   return (
     <div>
@@ -30,10 +55,10 @@ export default function ManageMembers() {
           <TableHead>
             <TableRow>
 
-              <TableCell align="right">#</TableCell>
-              <TableCell align="right">User Name</TableCell>
-              <TableCell align="right">User Email</TableCell>
-              <TableCell align="right">Action</TableCell>
+              <TableCell align="left">#</TableCell>
+              <TableCell align="left">User Name</TableCell>
+              <TableCell align="left">User Email</TableCell>
+              <TableCell align="left">Action</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -45,9 +70,9 @@ export default function ManageMembers() {
                 <TableCell component="th" scope="row">
                   {id + 1}
                 </TableCell>
-                <TableCell align="right">{row.UserName}</TableCell>
-                <TableCell align="right">{row.UserEmail}</TableCell>
-                <TableCell align="right"><DeleteIcon/></TableCell>
+                <TableCell align="left">{row.name}</TableCell>
+                <TableCell align="left">{row.email}</TableCell>
+                <TableCell onClick={()=>handleDelete(row._id)} align="left"><DeleteIcon/></TableCell>
 
               </TableRow>
             ))}

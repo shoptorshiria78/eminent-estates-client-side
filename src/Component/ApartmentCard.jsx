@@ -1,4 +1,4 @@
-import Card from '@mui/material/Card';
+
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -10,6 +10,7 @@ import useAuth from '../Hooks/useAuth';
 import {  useState } from 'react';
 import Swal from 'sweetalert2';
  import useUser from '../Hooks/useUser';
+ import { motion } from "framer-motion"
 
 
 
@@ -20,7 +21,7 @@ export default function ApartmentCard({ apartment }) {
   const [value, setValue] = useState(null);
   const [Booked, setBooked] = useState(false);
   const PresentUser = users.find(singleUser=> singleUser.email === user.email)
- 
+  const [rotate, setRotate] = useState(false)
 
  
   const handleAgreement = () => {
@@ -74,7 +75,7 @@ export default function ApartmentCard({ apartment }) {
   }
 
   return (
-    <Card sx={{ maxWidth: 345, maxHeight: 420 }}>
+    <motion.div animate={{rotate: rotate ? 360 : 0}} onClick={()=>setRotate(!rotate)} className='w-[345px] h-[420px] shadow-xl'>
       <CardMedia
         component="img"
         alt="green iguana"
@@ -109,6 +110,6 @@ export default function ApartmentCard({ apartment }) {
         }
       </CardActions>
 
-    </Card>
+    </motion.div>
   );
 }

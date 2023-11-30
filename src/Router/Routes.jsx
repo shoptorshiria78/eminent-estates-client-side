@@ -37,7 +37,7 @@ const Routes = createBrowserRouter([
          {
             path: 'apartment',
             element: <Apartment></Apartment>,
-            loader:()=>fetch('http://localhost:5000/apartmentCount')
+            loader:()=>fetch('https://eminent-estates-server-side.vercel.app/apartmentCount')
          },
          {
             path: 'register',
@@ -47,17 +47,18 @@ const Routes = createBrowserRouter([
    },
    {
       path: 'dashboard',
-      element: <PrivateRoute><DashboardLayOut></DashboardLayOut></PrivateRoute>,
+      element: <DashboardLayOut></DashboardLayOut>,
       children: [
          // adminLayOut
+         {
+            path:'adminProfile',
+            element: <AdminPrivateRoute><AdminProfile></AdminProfile></AdminPrivateRoute>
+         },
          {
             path: 'manageMember',
             element: <AdminPrivateRoute><ManageMembers></ManageMembers></AdminPrivateRoute>
          },
-         {
-            index:true,
-            element: <AdminPrivateRoute><AdminProfile></AdminProfile></AdminPrivateRoute>
-         },
+        
          {
             path: 'makeAnnouncement',
             element: <AdminPrivateRoute>
@@ -80,8 +81,8 @@ const Routes = createBrowserRouter([
          },
           // memberLayOut
          {
-            index:true,
-            element:<MemberPrivateRoute> <MyProfile></MyProfile></MemberPrivateRoute>
+           path:'memberProfile',
+            element:<MemberPrivateRoute><MyProfile></MyProfile></MemberPrivateRoute> 
                
          },
          {
@@ -106,7 +107,7 @@ const Routes = createBrowserRouter([
          },
          // user Routes
          {
-            index:true,
+            path:'userProfile',
             element:<PrivateRoute><MyProfileUser></MyProfileUser></PrivateRoute>
                
          },

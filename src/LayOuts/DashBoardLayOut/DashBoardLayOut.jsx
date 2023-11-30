@@ -157,7 +157,8 @@ export default function DashboardLayOut() {
                                         <ListItemIcon>
                                             <DashboardIcon />
                                         </ListItemIcon>
-                                        <NavLink  to="/dashboard" >
+                                        <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-3 py-3 rounded-xl w-full" : " text-base bg-purple-400 text-white px-3 py-3 rounded-xl w-full"} to="/dashboard/adminProfile" >
                                         <ListItemText primary="Admin Profile" />
                                         </NavLink>
                                     </ListItemButton>
@@ -165,7 +166,8 @@ export default function DashboardLayOut() {
                                         <ListItemIcon>
                                             <PersonIcon />
                                         </ListItemIcon>
-                                        <NavLink  to="/dashboard/manageMember" >
+                                        <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-1 py-3 rounded-xl w-full" : " text-base bg-purple-400 text-white px-1 py-3 rounded-xl w-full"} to="/dashboard/manageMember" >
                                           <ListItemText primary="Manage Members" />
                                         </NavLink>
                                     </ListItemButton>
@@ -173,15 +175,18 @@ export default function DashboardLayOut() {
                                         <ListItemIcon>
                                             <CampaignIcon />
                                         </ListItemIcon>
-                                        <NavLink  to="/dashboard/makeAnnouncement" >
-                                        <ListItemText primary="Make Announcement" />
+                                        <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-1 py-3 rounded-xl w-full" : " text-base bg-purple-400 text-white px-1 py-3 rounded-xl w-full"}  to="/dashboard/makeAnnouncement" >
+                                        <ListItemText primary="Make
+                                         Announcement" />
                                         </NavLink>
                                     </ListItemButton>
                                     <ListItemButton>
                                         <ListItemIcon>
                                             <FormatListBulletedIcon />
                                         </ListItemIcon>
-                                        <NavLink  to="/dashboard/agreementRequest" >
+                                        <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-3 py-3 rounded-xl w-full" : " text-base bg-purple-400 text-white px-3 py-3 rounded-xl w-full"} to="/dashboard/agreementRequest" >
                                         <ListItemText primary="Agreement Request" />
                                         </NavLink>
                                     </ListItemButton>
@@ -189,7 +194,8 @@ export default function DashboardLayOut() {
                                         <ListItemIcon>
                                             <AttachMoneyIcon />
                                         </ListItemIcon>
-                                        <NavLink  to="/dashboard/manageCoupon" >
+                                        <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-3 py-3 rounded-xl w-full" : " text-base bg-purple-400 text-white px-3 py-3 rounded-xl w-full"}  to="/dashboard/manageCoupon" >
                                         <ListItemText primary="Manage Coupons" />
                                         </NavLink>
                                     </ListItemButton>
@@ -201,7 +207,8 @@ export default function DashboardLayOut() {
                                             <ListItemIcon>
                                                 <DashboardIcon />
                                             </ListItemIcon>
-                                            <NavLink  to="/dashboard" >
+                                            <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-3 py-3 rounded-xl w-full" : " text-base bg-purple-400 text-white px-3 py-3 rounded-xl w-full"}  to="/dashboard/memberProfile" >
                                             <ListItemText primary="My Profile" />
                                             </NavLink>
                                         </ListItemButton>
@@ -209,7 +216,8 @@ export default function DashboardLayOut() {
                                             <ListItemIcon>
                                                 <AttachMoneyIcon />
                                             </ListItemIcon>
-                                            <NavLink  to="/dashboard/makePayment" >
+                                            <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-3 py-3 rounded-xl w-full" : " text-base bg-purple-400 text-white px-3 py-3 rounded-xl w-full"}  to="/dashboard/makePayment" >
                                             <ListItemText primary="Make Payment" />
                                             </NavLink>
                                         </ListItemButton>
@@ -217,7 +225,8 @@ export default function DashboardLayOut() {
                                             <ListItemIcon>
                                                 <FormatListBulletedIcon />
                                             </ListItemIcon>
-                                            <NavLink  to="/dashboard/paymentHistory" >
+                                            <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-3 py-3 rounded-xl w-full" : " text-base bg-purple-400 text-white px-3 py-3 rounded-xl w-full"}  to="/dashboard/paymentHistory" >
                                             <ListItemText primary="Payment History" />
                                             </NavLink>
                                         </ListItemButton>
@@ -225,7 +234,8 @@ export default function DashboardLayOut() {
                                             <ListItemIcon>
                                                 <CampaignIcon />
                                             </ListItemIcon>
-                                            <NavLink  to="/dashboard/announcementMember" >
+                                            <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-3 py-3 rounded-xl w-full" : " text-base bg-purple-400 text-white px-3 py-3 rounded-xl w-full"} to="/dashboard/announcementMember" >
                                             <ListItemText primary="Announcement" />
                                             </NavLink>
                                         </ListItemButton>
@@ -234,7 +244,8 @@ export default function DashboardLayOut() {
                                             <ListItemIcon>
                                                 <DashboardIcon />
                                             </ListItemIcon>
-                                            <NavLink  to="/dashboard" >
+                                            <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-3 py-3 rounded-xl w-full" : " text-base bg-purple-400 text-white px-3 py-3 rounded-xl w-full"} to="/dashboard/userProfile" >
                                             <ListItemText primary="My Profile" />
                                             </NavLink>
                                         </ListItemButton>
@@ -242,7 +253,8 @@ export default function DashboardLayOut() {
                                             <ListItemIcon>
                                                 <CampaignIcon />
                                             </ListItemIcon>
-                                            <NavLink  to="/dashboard/announcementMember" >
+                                            <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-3 py-3 rounded-xl w-full" : " text-base bg-purple-400 text-white px-3 py-3 rounded-xl w-full"}  to="/dashboard/announcementUser" >
                                             <ListItemText primary="Announcement" />
                                             </NavLink>
                                         </ListItemButton>
@@ -256,7 +268,8 @@ export default function DashboardLayOut() {
                                 <ListItemIcon>
                                     <HomeIcon />
                                 </ListItemIcon>
-                                <NavLink to="/">
+                                <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-3 py-3 rounded-xl w-full" : " text-base bg-purple-400 text-white px-3 py-3 rounded-xl w-full"} to="/">
                                 <ListItemText primary="Home" />
                             </NavLink>
                         </ListItemButton>
@@ -264,7 +277,8 @@ export default function DashboardLayOut() {
                             <ListItemIcon>
                                 <ApartmentIcon />
                             </ListItemIcon>
-                            <NavLink to="/apartment" >
+                            <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-3 py-3 rounded-xl w-full" : " text-base bg-purple-400 text-white px-3 py-3 rounded-xl w-full"} to="/apartment" >
                             <ListItemText primary="Apartment" />
                             </NavLink>
                         </ListItemButton>
