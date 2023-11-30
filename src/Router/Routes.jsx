@@ -37,7 +37,7 @@ const Routes = createBrowserRouter([
          {
             path: 'apartment',
             element: <Apartment></Apartment>,
-            loader:()=>fetch('https://eminent-estates-server-side.vercel.app/apartmentCount')
+            loader:()=>fetch('http://localhost:5000/apartmentCount')
          },
          {
             path: 'register',

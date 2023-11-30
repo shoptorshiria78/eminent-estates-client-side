@@ -1,8 +1,8 @@
-# React + Vite
+livelink: https://serene-bunny-0a2ec9.netlify.app
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+5 features of my project:
+1. It has different dashboard for Admin, user, member. No one can see each others dashboard
+2. Admin has the authority to check members. Make members or delete members.
+3. Members can pay their rent through payment system of stripe.
+4. Any user can Book the apartment.
+5. It has a map to show the location.
