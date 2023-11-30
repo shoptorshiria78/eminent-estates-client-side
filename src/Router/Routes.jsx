@@ -17,6 +17,9 @@ import MakeCouponPage from "../Pages/DashBoardPages/AdminPage/MakeCouponPage";
 import MakePayment from "../Pages/DashBoardPages/MemberPage.jsx/MakePayment";
 import MakePaymentPage from "../Pages/DashBoardPages/MemberPage.jsx/MakePaymentPage";
 import PaymentHistory from "../Pages/DashBoardPages/MemberPage.jsx/PaymentHistory";
+import AdminProfile from "../Pages/DashBoardPages/AdminPage/AdminProfile";
+import MyProfileUser from "../Pages/DashBoardPages/UserPage.jsx/MyProfileUser";
+import AnnouncementUser from "../Pages/DashBoardPages/UserPage.jsx/AnnouncementUser";
 
 const Routes = createBrowserRouter([
    {
@@ -33,7 +36,8 @@ const Routes = createBrowserRouter([
          },
          {
             path: 'apartment',
-            element: <Apartment></Apartment>
+            element: <Apartment></Apartment>,
+            loader:()=>fetch('http://localhost:5000/apartmentCount')
          },
          {
             path: 'register',
@@ -49,6 +53,10 @@ const Routes = createBrowserRouter([
          {
             path: 'manageMember',
             element: <AdminPrivateRoute><ManageMembers></ManageMembers></AdminPrivateRoute>
+         },
+         {
+            index:true,
+            element: <AdminPrivateRoute><AdminProfile></AdminProfile></AdminPrivateRoute>
          },
          {
             path: 'makeAnnouncement',
@@ -72,7 +80,7 @@ const Routes = createBrowserRouter([
          },
           // memberLayOut
          {
-            path: 'myProfile',
+            index:true,
             element:<MemberPrivateRoute> <MyProfile></MyProfile></MemberPrivateRoute>
                
          },
@@ -95,7 +103,18 @@ const Routes = createBrowserRouter([
             path: 'announcementMember',
             element:<MemberPrivateRoute> <AnnouncementMember></AnnouncementMember></MemberPrivateRoute>
                
-         }
+         },
+         // user Routes
+         {
+            index:true,
+            element:<PrivateRoute><MyProfileUser></MyProfileUser></PrivateRoute>
+               
+         },
+         {
+            path: 'announcementUser',
+            element:<PrivateRoute><AnnouncementUser></AnnouncementUser></PrivateRoute>
+               
+         },
         
       
       ]

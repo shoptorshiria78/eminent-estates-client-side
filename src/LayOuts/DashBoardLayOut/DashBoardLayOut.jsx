@@ -9,14 +9,12 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PersonIcon from '@mui/icons-material/Person';
 import CampaignIcon from '@mui/icons-material/Campaign';
@@ -29,6 +27,7 @@ import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import useAdmin from '../../Hooks/useAdmin';
 import useMember from '../../Hooks/useMember';
 import { NavLink, Outlet } from 'react-router-dom';
+import Footer from '../../SharedComponent/Footer';
 
 
 
@@ -132,11 +131,7 @@ export default function DashboardLayOut() {
                         >
                             Dashboard
                         </Typography>
-                        <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
-                        </IconButton>
+                       
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" open={open}>
@@ -162,7 +157,9 @@ export default function DashboardLayOut() {
                                         <ListItemIcon>
                                             <DashboardIcon />
                                         </ListItemIcon>
+                                        <NavLink  to="/dashboard" >
                                         <ListItemText primary="Admin Profile" />
+                                        </NavLink>
                                     </ListItemButton>
                                     <ListItemButton>
                                         <ListItemIcon>
@@ -204,7 +201,7 @@ export default function DashboardLayOut() {
                                             <ListItemIcon>
                                                 <DashboardIcon />
                                             </ListItemIcon>
-                                            <NavLink  to="/dashboard/myProfile" >
+                                            <NavLink  to="/dashboard" >
                                             <ListItemText primary="My Profile" />
                                             </NavLink>
                                         </ListItemButton>
@@ -237,13 +234,17 @@ export default function DashboardLayOut() {
                                             <ListItemIcon>
                                                 <DashboardIcon />
                                             </ListItemIcon>
+                                            <NavLink  to="/dashboard" >
                                             <ListItemText primary="My Profile" />
+                                            </NavLink>
                                         </ListItemButton>
                                         <ListItemButton>
                                             <ListItemIcon>
                                                 <CampaignIcon />
                                             </ListItemIcon>
+                                            <NavLink  to="/dashboard/announcementMember" >
                                             <ListItemText primary="Announcement" />
+                                            </NavLink>
                                         </ListItemButton>
                                     </>
                         }
@@ -306,6 +307,7 @@ export default function DashboardLayOut() {
                     </Container>
                 </Box>
             </Box>
+            <Footer></Footer>
         </ThemeProvider>
     );
 }

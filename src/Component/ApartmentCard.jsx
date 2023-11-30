@@ -95,6 +95,7 @@ export default function ApartmentCard({ apartment }) {
           Apartment Rent: ${apartment.rent}
         </Typography>
         <DatePicker
+        sx={{my:1}}
           label='Select Date'
           value={value}
           onChange={(newValue) => setValue(newValue)}>
