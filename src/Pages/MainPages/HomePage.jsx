@@ -1,4 +1,5 @@
 import Banner from "../../Component/Banner";
+import MapAddress from "../../Component/MapAddress";
 import MainNavBarNPM from "../../SharedComponent/MainNavBar";
 
 const HomePage = () => {
@@ -6,6 +7,7 @@ const HomePage = () => {
         <div>
             <MainNavBarNPM></MainNavBarNPM>
             <Banner></Banner>
+            <MapAddress></MapAddress>
             
         </div>
     );
