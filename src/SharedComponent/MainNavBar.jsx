@@ -134,6 +134,14 @@ function MainNavBarNPM() {
                 
                 
               </Button>
+              <Button 
+                onClick={handleCloseNavMenu}
+                sx={{ mx: 4, color: 'white', display: 'block' }}
+              >
+                <Link href='/contact'>Contact Us</Link>
+                
+                
+              </Button>
             </Menu>
           </Box>
           <MapsHomeWorkIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -170,6 +178,13 @@ function MainNavBarNPM() {
                 style={{ marginLeft: '1rem' , color: 'white', display: 'block' }}
               >
                 Apartment
+              </NavLink>
+              <NavLink className={({ isActive }) =>
+                        isActive ? " text-base bg-indigo-600 text-white px-5 py-3 rounded-xl " : " text-base bg-purple-400 text-white px-5 py-3 rounded-xl "} to='/contact'
+                onClick={handleCloseNavMenu}
+                style={{ marginLeft: '1rem' , color: 'white', display: 'block' }}
+              >
+                Contact Us
               </NavLink>
            
           </Box>

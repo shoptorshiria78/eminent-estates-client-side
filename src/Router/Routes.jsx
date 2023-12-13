@@ -20,6 +20,7 @@ import PaymentHistory from "../Pages/DashBoardPages/MemberPage.jsx/PaymentHistor
 import AdminProfile from "../Pages/DashBoardPages/AdminPage/AdminProfile";
 import MyProfileUser from "../Pages/DashBoardPages/UserPage.jsx/MyProfileUser";
 import AnnouncementUser from "../Pages/DashBoardPages/UserPage.jsx/AnnouncementUser";
+import Contact from "../Pages/MainPages/Contact";
 
 const Routes = createBrowserRouter([
    {
@@ -37,11 +38,15 @@ const Routes = createBrowserRouter([
          {
             path: 'apartment',
             element: <Apartment></Apartment>,
-            loader:()=>fetch('http://localhost:5000/apartmentCount')
+            loader:()=>fetch('https://eminent-estates-server-side.vercel.app/apartmentCount')
          },
          {
             path: 'register',
             element: <RegistrationPage></RegistrationPage>
+         },
+         {
+            path: 'contact',
+            element: <Contact></Contact>
          }
       ]
    },

@@ -1,8 +1,9 @@
 import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography } from "@mui/material";
-import usePaymentHistory from "../../../Hooks/usePaymentHistory";
-import {  useEffect, useState } from "react";
+import {  useState } from "react";
 import useAxiosSecure from "../../../AxiosInterfaces/useAxiosSecure";
 import useAuth from "../../../Hooks/useAuth";
+import usePaymentHistory from "../../../Hooks/usePaymentHistory";
+
 
 function createData(email, price, transactionId, date, month) {
     return { email, price, transactionId, date, month };
@@ -10,28 +11,26 @@ function createData(email, price, transactionId, date, month) {
 
 const PaymentHistory = () => {
 
-    const [paymentMonthly, setPaymentMonthly] = useState(0);
+    const [paymentAllHistory, setPaymentAllHistory] = useState(null);
     const axiosSecure = useAxiosSecure();
-    const {user} = useAuth();
+    const { user } = useAuth();
+    const  [paymentHistory] = usePaymentHistory()
 
-    useEffect(()=>{
-       axiosSecure.get(`/paymentHistory/${user.email}`)
-       .then(res=>{
-        setPaymentMonthly(res.data)
-       })
-    },[axiosSecure, user])
-    
     const handleapply = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         const searchField = data.get('searchMonth');
-        
-        setPaymentMonthly(searchMonthly);
+        axiosSecure.get(`/paymentHistory/${user.email}?search=${searchField}`)
+        .then(res => {
+            setPaymentAllHistory(res.data)
+        })
+       
     }
-
-    const rows = paymentHistory?.map((info) => createData(info.email, info.price, info.transactionId, info.date, info.month))
-
-
+    console.log(paymentAllHistory)
+   
+    const rows = paymentAllHistory?.map((info) => createData(info.email, info.price, info.transactionId, info.date, info.month))|| paymentHistory?.map((info) => createData(info.email, info.price, info.transactionId, info.date, info.month));
+    
+    
 
     return (
         <div>
